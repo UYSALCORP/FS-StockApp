@@ -74,6 +74,10 @@ app.use("/upload", express.static("./upload"));
 const distPath = path.join(__dirname, "client", "dist");
 app.use(express.static(distPath));
 
+app.get("/", (req,res) => {
+  res.sendFile(path.join(distPath, index.html))
+})
+
 // Client Static Route:
 app.all("/*splat", (req, res) => {
   if (req.path.startsWith("/api")) {
